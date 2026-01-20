@@ -66,13 +66,13 @@ async function runAudit(url, options = {}) {
 
     const { lhr } = result;
 
-    // Extract scores
+    // Extract scores (with safe access for optional categories)
     const scores = {
-      performance: Math.round(lhr.categories.performance.score * 100),
-      accessibility: Math.round(lhr.categories.accessibility.score * 100),
-      bestPractices: Math.round(lhr.categories['best-practices'].score * 100),
-      seo: Math.round(lhr.categories.seo.score * 100),
-      pwa: Math.round(lhr.categories.pwa.score * 100)
+      performance: Math.round((lhr.categories.performance?.score || 0) * 100),
+      accessibility: Math.round((lhr.categories.accessibility?.score || 0) * 100),
+      bestPractices: Math.round((lhr.categories['best-practices']?.score || 0) * 100),
+      seo: Math.round((lhr.categories.seo?.score || 0) * 100),
+      pwa: Math.round((lhr.categories.pwa?.score || 0) * 100)
     };
 
     // Extract failed audits with details
