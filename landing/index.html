@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roier SEO Skill - AI-Powered Technical SEO for Claude Code</title>
+  <meta name="description" content="Transform your website's SEO with AI. Run Lighthouse audits and automatically fix technical SEO issues directly in your codebase.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Roier SEO Skill for Claude Code">
+  <meta property="og:description" content="AI-powered technical SEO auditing and automatic fixes. One command to audit. One agent to fix everything.">
+  <meta property="og:image" content="https://roier-seo.kemenystudio.com/og-image.png">
+  <meta property="og:url" content="https://roier-seo.kemenystudio.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Roier SEO Skill for Claude Code">
+  <meta name="twitter:description" content="AI-powered technical SEO auditing and automatic fixes.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-tertiary: #1a1a1d;
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a;
+      --accent: #22c55e;
+      --accent-hover: #16a34a;
+      --accent-glow: rgba(34, 197, 94, 0.15);
+      --border: #27272a;
+      --code-bg: #18181b;
+      --gradient-1: linear-gradient(135deg, #22c55e 0%, #10b981 50%, #06b6d4 100%);
+      --gradient-2: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(10, 10, 11, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--gradient-1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .github-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-tertiary);
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .github-link:hover {
+      background: var(--border);
+      border-color: var(--text-tertiary);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 160px 0 100px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .gradient-text {
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    /* Install Section */
+    .install-section {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 720px;
+      margin: 0 auto 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .install-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gradient-1);
+    }
+
+    .install-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .install-command {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+    }
+
+    .install-command code {
+      flex: 1;
+      color: var(--text-primary);
+      overflow-x: auto;
+    }
+
+    .install-command .prompt {
+      color: var(--accent);
+    }
+
+    .copy-btn {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .copy-btn:hover {
+      background: var(--border);
+      color: var(--text-primary);
+    }
+
+    .copy-btn.copied {
+      background: var(--accent);
+      color: var(--bg-primary);
+      border-color: var(--accent);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--border);
+      border-color: var(--text-tertiary);
+    }
+
+    /* Features Grid */
+    .features {
+      padding: 120px 0;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 64px;
+      letter-spacing: -0.02em;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--text-tertiary);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-glow);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* How It Works */
+    .how-it-works {
+      padding: 120px 0;
+      background: var(--bg-secondary);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 48px;
+      margin-top: 64px;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: var(--gradient-1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto 24px;
+      color: var(--bg-primary);
+    }
+
+    .step h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Demo Section */
+    .demo {
+      padding: 120px 0;
+    }
+
+    .demo-window {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 900px;
+      margin: 64px auto 0;
+    }
+
+    .demo-header {
+      background: var(--bg-tertiary);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .demo-dot.red { background: #ef4444; }
+    .demo-dot.yellow { background: #eab308; }
+    .demo-dot.green { background: #22c55e; }
+
+    .demo-content {
+      padding: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .demo-line {
+      margin-bottom: 8px;
+    }
+
+    .demo-prompt {
+      color: var(--accent);
+    }
+
+    .demo-user {
+      color: var(--text-primary);
+    }
+
+    .demo-output {
+      color: var(--text-secondary);
+      padding-left: 20px;
+    }
+
+    .demo-highlight {
+      color: #3b82f6;
+    }
+
+    .demo-success {
+      color: var(--accent);
+    }
+
+    /* Capabilities */
+    .capabilities {
+      padding: 120px 0;
+      background: var(--bg-secondary);
+    }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 64px;
+    }
+
+    .capability {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.95rem;
+    }
+
+    .capability-icon {
+      color: var(--accent);
+      font-size: 1.25rem;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta p {
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      max-width: 540px;
+      margin: 0 auto 40px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-copy {
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+    }
+
+    .footer-copy a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 120px 0 80px;
+      }
+
+      .install-command {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .copy-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">
+        <div class="logo-icon">⚡</div>
+        Roier SEO
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#demo">Demo</a>
+        <a href="https://github.com/kemenystudio/roier-skill" target="_blank" class="github-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          Star on GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Open Source Claude Code Skill
+      </div>
+      <h1>
+        AI-Powered <span class="gradient-text">Technical SEO</span><br>
+        That Actually Fixes Your Code
+      </h1>
+      <p class="hero-description">
+        Run Lighthouse audits and let Claude automatically fix SEO issues in your codebase.
+        Meta tags, structured data, accessibility, performance—all handled by AI.
+      </p>
+
+      <div class="install-section">
+        <div class="install-label">One-Click Install</div>
+        <div class="install-command">
+          <code><span class="prompt">$</span> git clone https://github.com/kemenystudio/roier-skill ~/.claude/skills/roier-seo && cd ~/.claude/skills/roier-seo/scripts && npm install</code>
+          <button class="copy-btn" onclick="copyInstallCommand(this)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <div class="cta-buttons">
+        <a href="https://github.com/kemenystudio/roier-skill" target="_blank" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          View on GitHub
+        </a>
+        <a href="#demo" class="btn btn-secondary">
+          See it in action
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything you need for perfect SEO</h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Lighthouse Audits</h3>
+          <p>Run full Lighthouse audits on any URL—local dev servers or live sites. Get detailed scores for Performance, Accessibility, SEO, Best Practices, and PWA.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3>Auto-Fix Issues</h3>
+          <p>Claude doesn't just report problems—it fixes them. Meta tags, alt text, structured data, accessibility issues—all implemented directly in your code.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Framework Aware</h3>
+          <p>Automatically detects Next.js, React, Vue, Nuxt, or plain HTML and applies the correct fix patterns for your stack.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Core Web Vitals</h3>
+          <p>Track and improve FCP, LCP, TBT, CLS, and other Core Web Vitals that impact your Google rankings.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🏗️</div>
+          <h3>Structured Data</h3>
+          <p>Add JSON-LD schemas for Organization, Article, BreadcrumbList, FAQ, and more. Rich snippets made easy.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">♿</div>
+          <h3>Accessibility</h3>
+          <p>WCAG compliance with ARIA labels, skip links, color contrast fixes, form labels, and semantic HTML improvements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Three steps to perfect SEO</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Install the Skill</h3>
+          <p>One command installs the skill to your Claude Code environment. No configuration needed.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Ask Claude</h3>
+          <p>"Audit my site at localhost:3000 and fix SEO issues." Claude automatically loads the skill.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Watch It Fix</h3>
+          <p>Claude runs the audit, analyzes results, and implements fixes directly in your codebase.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo -->
+  <section class="demo" id="demo">
+    <div class="container">
+      <div class="section-label">See It In Action</div>
+      <h2 class="section-title">From audit to fix in seconds</h2>
+
+      <div class="demo-window">
+        <div class="demo-header">
+          <span class="demo-dot red"></span>
+          <span class="demo-dot yellow"></span>
+          <span class="demo-dot green"></span>
+        </div>
+        <div class="demo-content">
+          <div class="demo-line">
+            <span class="demo-prompt">you:</span>
+            <span class="demo-user"> Audit my site at localhost:3000 and fix SEO issues</span>
+          </div>
+          <div class="demo-line demo-output">
+            Running Lighthouse audit on http://localhost:3000...
+          </div>
+          <div class="demo-line demo-output">
+            <br>
+            <span class="demo-highlight">📊 Scores:</span><br>
+            &nbsp;&nbsp;Performance: 78 | Accessibility: 85 | SEO: <span style="color: #ef4444;">64</span> | Best Practices: 92
+          </div>
+          <div class="demo-line demo-output">
+            <br>
+            <span style="color: #ef4444;">🔴 Critical Issues Found:</span><br>
+            &nbsp;&nbsp;• Document does not have a meta description<br>
+            &nbsp;&nbsp;• Images do not have [alt] attributes<br>
+            &nbsp;&nbsp;• Links do not have discernible names
+          </div>
+          <div class="demo-line demo-output">
+            <br>
+            Detected framework: <span class="demo-highlight">Next.js (App Router)</span><br>
+            Implementing fixes...
+          </div>
+          <div class="demo-line demo-output">
+            <br>
+            <span class="demo-success">✅ Added meta description to app/layout.tsx</span><br>
+            <span class="demo-success">✅ Added alt attributes to 3 images in components/Hero.tsx</span><br>
+            <span class="demo-success">✅ Added aria-labels to icon buttons in components/Nav.tsx</span>
+          </div>
+          <div class="demo-line demo-output">
+            <br>
+            Re-running audit to verify...<br>
+            <span class="demo-success">🎉 SEO score improved from 64 to 92!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="capabilities">
+    <div class="container">
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">50+ SEO fix patterns built-in</h2>
+
+      <div class="capabilities-grid">
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Title & Meta Description
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Open Graph Tags
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Twitter Cards
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Canonical URLs
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Robots Meta
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          JSON-LD Schemas
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Image Alt Text
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Image Dimensions
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Lazy Loading
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          WebP/AVIF Formats
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Font Preloading
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Resource Hints
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Skip Links
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          ARIA Labels
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Form Labels
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Color Contrast
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          Semantic HTML
+        </div>
+        <div class="capability">
+          <span class="capability-icon">✓</span>
+          HTTPS Enforcement
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to fix your SEO?</h2>
+      <p>Install the skill in seconds and let Claude handle the technical SEO work.</p>
+
+      <div class="cta-buttons">
+        <a href="https://github.com/kemenystudio/roier-skill" target="_blank" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          Get Started Free
+        </a>
+        <a href="https://github.com/kemenystudio/roier-skill/blob/main/SKILL.md" target="_blank" class="btn btn-secondary">
+          Read the Docs
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/kemenystudio/roier-skill" target="_blank">GitHub</a>
+        <a href="https://github.com/kemenystudio/roier-skill/issues" target="_blank">Issues</a>
+        <a href="https://github.com/kemenystudio/roier-skill/blob/main/LICENSE" target="_blank">MIT License</a>
+      </div>
+      <p class="footer-copy">
+        Built with ❤️ by <a href="https://kemenystudio.com" target="_blank">Kemeny Studio</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function copyInstallCommand(btn) {
+      const command = 'git clone https://github.com/kemenystudio/roier-skill ~/.claude/skills/roier-seo && cd ~/.claude/skills/roier-seo/scripts && npm install';
+
+      navigator.clipboard.writeText(command).then(() => {
+        btn.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Copied!
+        `;
+        btn.classList.add('copied');
+
+        setTimeout(() => {
+          btn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Copy
+          `;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
