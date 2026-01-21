@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Claude%20Code-Skill-22c55e?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code Skill">
-  <img src="https://img.shields.io/github/license/kemenystudio/roier-skill?style=for-the-badge" alt="MIT License">
-  <img src="https://img.shields.io/github/stars/kemenystudio/roier-skill?style=for-the-badge" alt="GitHub Stars">
+  <img src="https://img.shields.io/github/license/kemenystudio/roier-seo?style=for-the-badge" alt="MIT License">
+  <img src="https://img.shields.io/github/stars/kemenystudio/roier-seo?style=for-the-badge" alt="GitHub Stars">
 </p>
 
 <h1 align="center">⚡ Roier SEO Skill</h1>
@@ -15,7 +15,7 @@
   <a href="#-features">Features</a> •
   <a href="#-usage">Usage</a> •
   <a href="#-demo">Demo</a> •
-  <a href="https://kemenystudio.github.io/roier-skill/">Landing Page</a>
+  <a href="https://kemenystudio.github.io/roier-seo/">Landing Page</a>
 </p>
 
 ---
@@ -23,7 +23,7 @@
 ## 🚀 Quick Install
 
 ```bash
-npx skills add kemenystudio/roier-skill
+npx skills add kemenystudio/roier-seo
 ```
 
 That's it! The skill is now available in Claude Code.
@@ -32,13 +32,13 @@ That's it! The skill is now available in Claude Code.
 
 **Global installation** (available in all projects):
 ```bash
-npx skills add kemenystudio/roier-skill -g
+npx skills add kemenystudio/roier-seo -g
 ```
 
 **Using git clone:**
 
 ```bash
-git clone https://github.com/kemenystudio/roier-skill ~/.claude/skills/roier-seo && cd ~/.claude/skills/roier-seo/scripts && npm install
+git clone https://github.com/kemenystudio/roier-seo ~/.claude/skills/roier-seo && cd ~/.claude/skills/roier-seo/scripts && npm install
 ```
 
 ## ✨ Features
@@ -116,7 +116,7 @@ Once installed, just ask Claude naturally:
 ## 📁 Project Structure
 
 ```
-roier-skill/
+roier-seo/
 ├── SKILL.md              # Main skill instructions (loaded by Claude)
 ├── README.md             # This file
 ├── LICENSE               # MIT License
@@ -134,7 +134,7 @@ roier-skill/
 
 ```bash
 mkdir -p ~/.claude/skills/roier-seo
-git clone https://github.com/kemenystudio/roier-skill ~/.claude/skills/roier-seo
+git clone https://github.com/kemenystudio/roier-seo ~/.claude/skills/roier-seo
 cd ~/.claude/skills/roier-seo/scripts && npm install
 ```
 
@@ -142,7 +142,7 @@ cd ~/.claude/skills/roier-seo/scripts && npm install
 
 ```bash
 mkdir -p .claude/skills/roier-seo
-git clone https://github.com/kemenystudio/roier-skill .claude/skills/roier-seo
+git clone https://github.com/kemenystudio/roier-seo .claude/skills/roier-seo
 cd .claude/skills/roier-seo/scripts && npm install
 ```
 
@@ -214,7 +214,7 @@ Contributions are welcome!
 </p>
 
 <p align="center">
-  <a href="https://github.com/kemenystudio/roier-skill">GitHub</a> •
-  <a href="https://github.com/kemenystudio/roier-skill/issues">Issues</a> •
-  <a href="https://github.com/kemenystudio/roier-skill/discussions">Discussions</a>
+  <a href="https://github.com/kemenystudio/roier-seo">GitHub</a> •
+  <a href="https://github.com/kemenystudio/roier-seo/issues">Issues</a> •
+  <a href="https://github.com/kemenystudio/roier-seo/discussions">Discussions</a>
 </p>
