@@ -23,7 +23,7 @@
 ## 🚀 Quick Install
 
 ```bash
-npx skild install kemenystudio/roier-skill
+npx skills add kemenystudio/roier-skill
 ```
 
 That's it! The skill is now available in Claude Code.
@@ -32,7 +32,7 @@ That's it! The skill is now available in Claude Code.
 
 **Global installation** (available in all projects):
 ```bash
-npx skild install kemenystudio/roier-skill -t claude --global
+npx skills add kemenystudio/roier-skill -g
 ```
 
 **Using git clone:**
