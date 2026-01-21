@@ -15,7 +15,7 @@
   <a href="#-features">Features</a> •
   <a href="#-usage">Usage</a> •
   <a href="#-demo">Demo</a> •
-  <a href="./landing/index.html">Landing Page</a>
+  <a href="https://kemenystudio.github.io/roier-skill/">Landing Page</a>
 </p>
 
 ---
@@ -120,8 +120,7 @@ roier-skill/
 ├── SKILL.md              # Main skill instructions (loaded by Claude)
 ├── README.md             # This file
 ├── LICENSE               # MIT License
-├── landing/
-│   └── index.html        # Landing page for GitHub Pages
+├── index.html            # Landing page (GitHub Pages)
 └── scripts/
     ├── audit.js          # Local Lighthouse audit (needs Chrome)
     ├── audit-api.js      # PageSpeed API audit (public URLs only)
