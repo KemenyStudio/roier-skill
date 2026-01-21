@@ -677,7 +677,7 @@
       <div class="install-section">
         <div class="install-label">One-Click Install</div>
         <div class="install-command">
-          <code><span class="prompt">$</span> npx add-skill kemenystudio/roier-skill</code>
+          <code><span class="prompt">$</span> npx skild install kemenystudio/roier-skill</code>
           <button class="copy-btn" onclick="copyInstallCommand(this)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -949,7 +949,7 @@
 
   <script>
     function copyInstallCommand(btn) {
-      const command = 'npx add-skill kemenystudio/roier-skill';
+      const command = 'npx skild install kemenystudio/roier-skill';
 
       navigator.clipboard.writeText(command).then(() => {
         btn.innerHTML = `

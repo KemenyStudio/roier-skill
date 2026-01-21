@@ -22,24 +22,24 @@
 
 ## 🚀 Quick Install
 
-### Using npx (Recommended)
-
 ```bash
-npx add-skill kemenystudio/roier-skill
+npx skild install kemenystudio/roier-skill
 ```
 
-For global installation (available in all projects):
+That's it! The skill is now available in Claude Code.
+
+### Alternative Methods
+
+**Global installation** (available in all projects):
 ```bash
-npx add-skill kemenystudio/roier-skill --global
+npx skild install kemenystudio/roier-skill -t claude --global
 ```
 
-### Using git clone
+**Using git clone:**
 
 ```bash
 git clone https://github.com/kemenystudio/roier-skill ~/.claude/skills/roier-seo && cd ~/.claude/skills/roier-seo/scripts && npm install
 ```
-
-That's it! The skill is now available in Claude Code.
 
 ## ✨ Features
 
