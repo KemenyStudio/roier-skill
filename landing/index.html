@@ -609,28 +609,103 @@
       }
 
       .hero {
-        padding: 120px 0 80px;
+        padding: 100px 0 60px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .install-section {
+        margin: 32px 0;
       }
 
       .install-command {
         flex-direction: column;
         align-items: stretch;
+        padding: 12px 16px;
+        font-size: 0.85rem;
+        gap: 12px;
+      }
+
+      .install-command code {
+        text-align: center;
+        word-break: break-all;
       }
 
       .copy-btn {
         width: 100%;
         justify-content: center;
+        padding: 12px 16px;
       }
 
       .cta-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 12px;
       }
 
       .btn {
         width: 100%;
         max-width: 300px;
         justify-content: center;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .feature-card {
+        padding: 20px;
+      }
+
+      .steps {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .step {
+        text-align: center;
+      }
+
+      .demo-window {
+        font-size: 0.75rem;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .install-command {
+        font-size: 0.8rem;
+        padding: 10px 12px;
+      }
+
+      .badge {
+        font-size: 0.75rem;
+        padding: 6px 12px;
       }
     }
   </style>
