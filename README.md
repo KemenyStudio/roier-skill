@@ -22,6 +22,19 @@
 
 ## 🚀 Quick Install
 
+### Using npx (Recommended)
+
+```bash
+npx add-skill kemenystudio/roier-skill
+```
+
+For global installation (available in all projects):
+```bash
+npx add-skill kemenystudio/roier-skill --global
+```
+
+### Using git clone
+
 ```bash
 git clone https://github.com/kemenystudio/roier-skill ~/.claude/skills/roier-seo && cd ~/.claude/skills/roier-seo/scripts && npm install
 ```
