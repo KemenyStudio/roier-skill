@@ -3,7 +3,7 @@ node_modules/
 scripts/node_modules/
 
 # Installed skills (project-local)
-.claude/skills/
+.claude/
 .opencode/
 
 # OS files
@@ -31,3 +31,8 @@ build/
 .env
 .env.local
 .env.*.local
+
+# Development folders (not needed for skill functionality)
+promo-video/
+references/
+templates/
